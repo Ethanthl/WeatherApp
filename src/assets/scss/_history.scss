@@ -1,0 +1,49 @@
+.history {
+  border-radius: 24px;
+  margin-top: 1rem;
+  padding: 1rem;
+  width: calc(100% + 1rem);
+  margin-left: -0.5rem;
+  @include md {
+    border-radius: 20px;
+  }
+
+  li {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 16px;
+    padding: 1rem;
+    margin: 1rem;
+    @include md {
+        align-items: center;
+    }
+
+    .history-item-content {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-direction: row;
+        @include md {
+            flex-direction: column;
+            justify-content: start;
+            align-items: start;
+        }
+    }
+  }
+
+  .list-buttons {
+    display: flex;
+
+  }
+
+  .history-btn {
+    // color: #666;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+  }
+}

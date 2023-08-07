@@ -1,9 +1,53 @@
 .home-container {
-    margin-top: 7rem;
+  position: relative;
+  margin-top: 7rem;
   width: 100%;
-  padding: 2rem;
+  padding: 3rem;
   border-radius: 40px;
   @include md {
     border-radius: 20px;
+    padding: 2rem;
+  }
+}
+
+.weather-img {
+  z-index: 100;
+  position: absolute;
+  right: 1rem;
+  margin-top: -9rem;
+  width: 280px;
+  @include md {
+    width: 141px;
+    margin-top: -6rem;
+  }
+}
+
+.row {
+  display: flex;
+}
+
+.details {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.details-country {
+  margin-right: 3rem;
+  @include md {
+    margin: 0;
+  }
+}
+
+.details-right {
+  flex-direction: row;
+  justify-content: space-between;
+  flex-grow: 1;
+  margin: 0;
+  @include md {
+    flex-direction: column-reverse;
+    align-items: end;
+    margin-top: -3rem;
+    line-height: 18px;
   }
 }

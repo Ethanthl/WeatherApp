@@ -1,7 +1,12 @@
 .search {
   display: flex;
-  input, .search-btn {
+
+  input,
+  .search-btn {
     border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     @include md {
       border-radius: 8px;
@@ -13,11 +18,18 @@
     height: 60px;
     padding: 0 1rem;
     width: 100%;
+    @include md {
+      height: 40px;
+    }
   }
 
   .search-btn {
     width: 60px;
     height: 60px;
     margin-left: 1rem;
+    @include md {
+      width: 40px;
+      height: 40px;
+    }
   }
 }

@@ -54,6 +54,8 @@ interface WeatherData {
   name: string;
   cod: number;
   message: string;
+  date: string;
+  time: string;
 }
 
 const initialState: HistoryState = {
@@ -78,6 +80,7 @@ const historySlice = createSlice({
         const index = action.payload
         if( index >=0 && index < state.weatherHistory.length) {
             state.weatherHistory.splice(index, 1);
+     
         }
       },
     clearHistory: (state) => {

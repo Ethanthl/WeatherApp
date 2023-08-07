@@ -7,7 +7,7 @@ import Search from "./components/Search/Search";
 
 function App() {
   return (
-    <div className="main-container bg-bgLight dark:bg-bgDark text-light dark:text-dark h-screen">
+    <div className="main-container bg-bgLight dark:bg-bgDark text-dark dark:text-light h-full">
       <div className="container">
         <ThemeSwitcher />
         <Search />

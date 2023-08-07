@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { fetchWeather } from "../../store/apiSlice";
-import Search from "../Search/Search";
+import Cloud from "../../assets/images/cloud.png";
+import Sun from "../../assets/images/sun.png";
 import SearchHistory from "../History/History";
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -20,20 +21,6 @@ const Home = () => {
     return <div>Error: {error}</div>;
   }
 
-  let today = new Date(),
-    date =
-      today.getFullYear() +
-      "-" +
-      (today.getMonth() + 1) +
-      "-" +
-      today.getDate();
-
-  let time = new Date().toLocaleString("en-US", {
-    hour: "2-digit",
-    hour12: true,
-    minute: "2-digit",
-  });
-
   const kelvinToCelcus = (temp: number | undefined) => {
     if (temp) {
       let celsius = temp - 273.15;
@@ -42,31 +29,41 @@ const Home = () => {
   };
   return (
     <div>
-      {data?.cod != 404 ? (
-        <div className="home-container bg-cardLight dark:bg-cardDark border border-dark">
-          <h1 className="text-light dark:text-dark">{data?.main?.temp}</h1>
-          <h1 className="text-headerLight dark:text-headerDark">
-            {kelvinToCelcus(data?.main?.temp)?.toFixed(0)}
-          </h1>
-          <div>
-            {data?.name}, {data?.sys?.country}
-          </div>
-          <div>{data?.weather[0].main}</div>
-          <div>{data?.weather[0].description}</div>
-          <div>
-            {kelvinToCelcus(data?.main?.temp_min)?.toFixed(0)} -{" "}
-            {kelvinToCelcus(data?.main?.temp_max)?.toFixed(0)}
-          </div>
-          <div>{data?.main?.humidity}%</div>
-          <div>
-            {date} &nbsp;
-            {time}
-          </div>
-        </div>
-      ) : (
-        <div>{data?.message}</div>
-      )}
-      <SearchHistory />
+      <div className="home-container bg-cardLight dark:bg-cardDark border border-light">
+        {data?.cod != 404 ? (
+          <>
+            <img
+              className="weather-img"
+              src={data?.weather[0].main === "Clouds" ? Cloud : Sun}
+            ></img>
+            <h2 className="text-dark dark:text-light">Today's Weather</h2>
+            <h1 className="text-primary dark:text-light">
+              {kelvinToCelcus(data?.main?.temp)?.toFixed(0)}&deg;
+            </h1>
+            <div>
+              H: {kelvinToCelcus(data?.main?.temp_min)?.toFixed(0)}&deg; L:{" "}
+              {kelvinToCelcus(data?.main?.temp_max)?.toFixed(0)}&deg;
+            </div>
+            <div className="row details text-grey dark:text-light">
+              <h3 className="font-bold details-country">
+                {data?.name}, {data?.sys?.country}
+              </h3>
+              <div className="row details details-right">
+              <div>
+                {data?.date} &nbsp;
+                {data?.time}
+              </div>
+              <div>Humidity: {data?.main?.humidity}%</div>
+              <div>{data?.weather[0].main}</div>
+              </div>
+              {/* <div>{data?.weather[0].description}</div> */}
+            </div>{" "}
+          </>
+        ) : (
+          <div>{data?.message}</div>
+        )}
+        <SearchHistory />
+      </div>
     </div>
   );
 };

@@ -62,7 +62,8 @@ interface ApiState {
   name: string;
   cod: number;
   message: string;
-  time: Date;
+  date: string;
+  time: string;
 }
 
 interface CountryState {
@@ -75,7 +76,7 @@ export const fetchWeather = createAsyncThunk(
   "fetch",
   async (input: CountryState | undefined, thunkAPI) => {
     try {
-      //get city & country from user input
+      //Get city & country from user input
       let city: string = input?.city ? input?.city : "singapore";
 
       const response = await fetch(
@@ -86,8 +87,13 @@ export const fetchWeather = createAsyncThunk(
         }
       );
       const data = await response.json();
-      data.time = new Date().getTime();
-      console.log(data);
+      //Add date and time to response and return
+      data.date = new Date().toLocaleDateString().replaceAll("/", "-");
+      data.time = new Date().toLocaleTimeString(undefined, {
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
       //Only add to history if response is not error and was searched by user
       if (input && data.cod != 404) {
         //Save search data to history

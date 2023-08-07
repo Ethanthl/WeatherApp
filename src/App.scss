@@ -1,19 +1,54 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import "./assets/scss/breakpoints";
+@import "./assets/scss/themeswitcher";
 @import "./assets/scss/home";
 @import "./assets/scss/search";
+@import "./assets/scss/history";
 
+p {
+  font-size: 16px;
+  @include md {
+    font-size: 14px;
+  }
+}
+
+h1 {
+  font-size: 81px;
+  line-height: 81px;
+  font-weight: 700;
+  @include md {
+    font-size: 50px;
+    line-height: 50px;
+  }
+}
+h2 {
+  line-height: 21.79px;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+
+small {
+  font-size: 14px;
+  @include md {
+    font-size: 10px;
+  }
+}
 
 .main-container {
   width: 100%;
+  min-height: 100vh;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   // justify-content: center;
   background-position: center;
-  background-size:cover;
+  background-size: cover;
 }
 
 .container {
