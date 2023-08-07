@@ -18,10 +18,10 @@ const Search = () => {
     // dispatch(addQuery(data));
   };
   return (
-    <div>
-      <input name="city" onChange={(e) => handleChange(e)}></input>
-      <input name="country" onChange={(e) => handleChange(e)}></input>
-      <button onClick={() => handleSubmit()}>Search</button>
+    <div className="search">
+      <input name="city" className="bg-cardLight dark:bg-cardDark" onChange={(e) => handleChange(e)} placeholder="Country"></input>
+      {/* <input name="country" onChange={(e) => handleChange(e)}></input> */}
+      <button className="search-btn bg-primary dark:bg-primaryDark" onClick={() => handleSubmit()}>S</button>
     </div>
   );
 };

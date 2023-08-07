@@ -42,18 +42,20 @@ const Home = () => {
   };
   return (
     <div>
-      <Search />
       {data?.cod != 404 ? (
-        <div>
-          <h1>{data?.main?.temp}</h1>
-          <h1>{kelvinToCelcus(data?.main?.temp)?.toFixed(0)}</h1>
+        <div className="home-container bg-cardLight dark:bg-cardDark border border-dark">
+          <h1 className="text-light dark:text-dark">{data?.main?.temp}</h1>
+          <h1 className="text-headerLight dark:text-headerDark">
+            {kelvinToCelcus(data?.main?.temp)?.toFixed(0)}
+          </h1>
           <div>
             {data?.name}, {data?.sys?.country}
           </div>
           <div>{data?.weather[0].main}</div>
           <div>{data?.weather[0].description}</div>
           <div>
-            {data?.main?.temp_min} - {data?.main?.temp_max}
+            {kelvinToCelcus(data?.main?.temp_min)?.toFixed(0)} -{" "}
+            {kelvinToCelcus(data?.main?.temp_max)?.toFixed(0)}
           </div>
           <div>{data?.main?.humidity}%</div>
           <div>

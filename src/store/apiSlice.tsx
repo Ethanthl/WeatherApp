@@ -62,6 +62,7 @@ interface ApiState {
   name: string;
   cod: number;
   message: string;
+  time: Date;
 }
 
 interface CountryState {
@@ -85,6 +86,8 @@ export const fetchWeather = createAsyncThunk(
         }
       );
       const data = await response.json();
+      data.time = new Date().getTime();
+      console.log(data);
       //Only add to history if response is not error and was searched by user
       if (input && data.cod != 404) {
         //Save search data to history
