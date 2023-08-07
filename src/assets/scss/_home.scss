@@ -1,0 +1,9 @@
+.home-container {
+    margin-top: 7rem;
+  width: 100%;
+  padding: 2rem;
+  border-radius: 40px;
+  @include md {
+    border-radius: 20px;
+  }
+}

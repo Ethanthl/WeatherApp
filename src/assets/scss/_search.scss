@@ -1,0 +1,23 @@
+.search {
+  display: flex;
+  input, .search-btn {
+    border-radius: 20px;
+
+    @include md {
+      border-radius: 8px;
+    }
+  }
+
+  input {
+    max-width: 620px;
+    height: 60px;
+    padding: 0 1rem;
+    width: 100%;
+  }
+
+  .search-btn {
+    width: 60px;
+    height: 60px;
+    margin-left: 1rem;
+  }
+}
