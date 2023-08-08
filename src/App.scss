@@ -41,6 +41,7 @@ small {
 
 .main-container {
   position:fixed;
+  overflow-y:scroll;
   width: 100%;
   min-height: 100vh;
   padding: 1rem;
