@@ -1,0 +1,9 @@
+Since the wireframe and mockups have some differences such as only 1 input field,
+I've hidden the country input field in the final product which can be found in the Search.tsx file on line 67-76
+Functionality for this has been implemented.
+Uncomment to test (Melbourne seems to be a good test as it usuallys return Melbourne, US wihout country input)
+
+Theme switcher has been implemented as I am unable to see exact font sizes and spacing on figma file styles may vary
+Button can be found inbetween searchbar and main content card
+
+I have not saved history into cache for this project so data will reset on refresh.

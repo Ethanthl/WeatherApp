@@ -8,7 +8,7 @@ import SearchHistory from "../History/History";
 const Home = () => {
   const dispatch = useDispatch<AppDispatch>();
   const { data, loading, error } = useSelector((state: RootState) => state.api);
-  //   console.log(data);
+  //fetch weather data
   useEffect(() => {
     dispatch(fetchWeather());
   }, [dispatch]);
@@ -20,8 +20,8 @@ const Home = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
-
-  const kelvinToCelcus = (temp: number | undefined) => {
+  //Api uses kelvin convert to celius
+  const kelvinToCelcius = (temp: number | undefined) => {
     if (temp) {
       let celsius = temp - 273.15;
       return celsius;
@@ -29,7 +29,7 @@ const Home = () => {
   };
   return (
     <div>
-      <div className="home-container bg-cardLight dark:bg-cardDark border border-light">
+      <div className="home-container bg-cardLight dark:bg-cardDark border border-light dark:border-0">
         {data?.cod != 404 ? (
           <>
             <img
@@ -38,11 +38,11 @@ const Home = () => {
             ></img>
             <h2 className="text-dark dark:text-light">Today's Weather</h2>
             <h1 className="text-primary dark:text-light">
-              {kelvinToCelcus(data?.main?.temp)?.toFixed(0)}&deg;
+              {kelvinToCelcius(data?.main?.temp)?.toFixed(0)}&deg;
             </h1>
             <div>
-              H: {kelvinToCelcus(data?.main?.temp_min)?.toFixed(0)}&deg; L:{" "}
-              {kelvinToCelcus(data?.main?.temp_max)?.toFixed(0)}&deg;
+              H: {kelvinToCelcius(data?.main?.temp_min)?.toFixed(0)}&deg; L:{" "}
+              {kelvinToCelcius(data?.main?.temp_max)?.toFixed(0)}&deg;
             </div>
             <div className="row details text-grey dark:text-light">
               <h3 className="font-bold details-country">
@@ -60,7 +60,7 @@ const Home = () => {
             </div>{" "}
           </>
         ) : (
-          <div>{data?.message}</div>
+          <div className="error-container">{data?.message}</div>
         )}
         <SearchHistory />
       </div>

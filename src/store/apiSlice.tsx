@@ -3,15 +3,7 @@ import axios from "axios";
 import { addWeatherData } from "./historySlice";
 
 const API_ENDPOINT = "https://api.example.com/data";
-let today = new Date(),
-  date =
-    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
 
-let time = new Date().toLocaleString("en-US", {
-  hour: "2-digit",
-  hour12: true,
-  minute: "2-digit",
-});
 //Api response value
 interface ApiState {
   coord: {
@@ -67,7 +59,7 @@ interface ApiState {
 }
 
 interface CountryState {
-  //   country?: string;
+  country?: string;
   city: string;
 }
 
@@ -77,11 +69,20 @@ export const fetchWeather = createAsyncThunk(
   async (input: CountryState | undefined, thunkAPI) => {
     try {
       //Get city & country from user input
-      let city: string = input?.city ? input?.city : "singapore";
+      let city: string;
+      let countryCode: string;
+      if (input) {
+        city = input.city ? input.city : "";
+        countryCode = input.country ? input.country : "";
+        console.log(countryCode)
+      } else {
+        city = "singapore";
+        countryCode = "sg";
+      }
 
       const response = await fetch(
         // "https://swapi.dev/api/people/1/",
-        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=5fed486ef4a7c6ba47f4a40c75e08a14`,
+        `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=5fed486ef4a7c6ba47f4a40c75e08a14`,
         {
           method: "GET",
         }
