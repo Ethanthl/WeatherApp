@@ -4,8 +4,6 @@ import { addWeatherData } from "./historySlice";
 const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
 const apiURL = process.env.REACT_APP_OPENWEATHER_API_URL;
 
-console.log(apiKey);
-console.log(apiURL);
 //Api response value
 interface ApiState {
   coord: {
@@ -76,7 +74,7 @@ export const fetchWeather = createAsyncThunk(
       if (input) {
         city = input.city ? input.city : "";
         countryCode = input.country ? input.country : "";
-        console.log(countryCode);
+        // console.log(countryCode);
       } else {
         city = "singapore";
         countryCode = "sg";

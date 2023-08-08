@@ -68,15 +68,15 @@ const historySlice = createSlice({
   initialState,
   reducers: {
     addWeatherData: (state, action: PayloadAction<WeatherData>) => {
-        console.log("history");
-        console.log(action.payload);
+        // console.log("history");
+        // console.log(action.payload);
         if (action.payload) {
           state.weatherHistory.push(action.payload);
         }
       },
       removeWeatherData: (state, action: PayloadAction<number>) => {
-        console.log("history");
-        console.log(action.payload);
+        // console.log("history");
+        // console.log(action.payload);
         const index = action.payload
         if( index >=0 && index < state.weatherHistory.length) {
             state.weatherHistory.splice(index, 1);
