@@ -58,7 +58,7 @@ const Search = () => {
           onChange={(e) => handleChange(e)}
           required
         ></input>
-        <span className="floating-label text-grey">City</span>
+        <span className="floating-label text-grey dark:text-lighter">City</span>
         {error === true && (
           <small className="error text-white">Please enter a city or country</small>
         )}

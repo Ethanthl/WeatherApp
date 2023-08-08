@@ -1,9 +1,11 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
 import { addWeatherData } from "./historySlice";
 
-const API_ENDPOINT = "https://api.example.com/data";
+const apiKey = process.env.REACT_APP_OPENWEATHER_API_KEY;
+const apiURL = process.env.REACT_APP_OPENWEATHER_API_URL;
 
+console.log(apiKey);
+console.log(apiURL);
 //Api response value
 interface ApiState {
   coord: {
@@ -74,7 +76,7 @@ export const fetchWeather = createAsyncThunk(
       if (input) {
         city = input.city ? input.city : "";
         countryCode = input.country ? input.country : "";
-        console.log(countryCode)
+        console.log(countryCode);
       } else {
         city = "singapore";
         countryCode = "sg";
@@ -82,7 +84,7 @@ export const fetchWeather = createAsyncThunk(
 
       const response = await fetch(
         // "https://swapi.dev/api/people/1/",
-        `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&appid=5fed486ef4a7c6ba47f4a40c75e08a14`,
+        `${apiURL}/data/2.5/weather?q=${city},${countryCode}&appid=${apiKey}`,
         {
           method: "GET",
         }
