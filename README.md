@@ -1,4 +1,4 @@
-#Assumptions can be found in assumptions.txt in root folder
+# Assumptions can be found in assumptions.txt in root folder
 
 # Getting Started with Create React App
 
